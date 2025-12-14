@@ -67,6 +67,8 @@ export interface PaywallFlags {
 
 // Teacher Portal flags
 export interface TeacherPortalFlags {
+  // Enable authentication requirement (false = public access)
+  authEnabled: boolean;
   // Whether to enforce trial expiry (false = rolling extensions pre-launch)
   enforceTrialExpiry: boolean;
   // Number of days for auto-granted trial on signup

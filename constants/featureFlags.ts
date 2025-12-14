@@ -40,6 +40,7 @@ export const DEFAULT_FLAGS: FeatureFlags = {
     useNativePaywallUI: true,
   },
   teacherPortal: {
+    authEnabled: false, // Set to true to require login
     enforceTrialExpiry: false, // Set to true when ready to charge
     autoTrialDays: 30,
     tiktokEnabled: true,
