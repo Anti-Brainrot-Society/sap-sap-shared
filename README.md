@@ -85,6 +85,12 @@ pnpm build
 npm publish
 ```
 
+## System Architecture
+
+For the complete system architecture including database topology, deployment strategy, and cross-repo dependencies, see:
+
+**[ARCHITECTURE.md](./ARCHITECTURE.md)**
+
 ## Consumers
 
 - [sap-sap-mobile](https://github.com/Anti-Brainrot-Society/sap-sap-mobile) - Mobile app
