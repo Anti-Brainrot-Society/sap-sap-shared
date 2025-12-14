@@ -55,7 +55,7 @@ export interface DebugFlags {
   showFeatureFlagsInspector: boolean;
 }
 
-// Paywall-related flags
+// Paywall-related flags (mobile app)
 export interface PaywallFlags {
   // Enable client-side paywall gating
   enabled: boolean;
@@ -63,6 +63,18 @@ export interface PaywallFlags {
   freeBeatsPerStory: number;
   // Prefer showing native RC paywall UI when available
   useNativePaywallUI: boolean;
+}
+
+// Teacher Portal flags
+export interface TeacherPortalFlags {
+  // Whether to enforce trial expiry (false = rolling extensions pre-launch)
+  enforceTrialExpiry: boolean;
+  // Number of days for auto-granted trial on signup
+  autoTrialDays: number;
+  // Enable TikTok content creator feature
+  tiktokEnabled: boolean;
+  // Enable pack builder feature
+  packBuilderEnabled: boolean;
 }
 
 // =============================================================================
@@ -96,6 +108,8 @@ export interface FeatureFlags {
   notifications: NotificationsFlags;
   debug: DebugFlags;
   paywall: PaywallFlags;
+  // Teacher Portal flags (paywall, features)
+  teacherPortal: TeacherPortalFlags;
   // Profile flags (learning profile, etc.)
   profile: ProfileFlags;
   // --- DEPRECATED SETS ---

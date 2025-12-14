@@ -39,6 +39,12 @@ export const DEFAULT_FLAGS: FeatureFlags = {
     freeBeatsPerStory: 2,
     useNativePaywallUI: true,
   },
+  teacherPortal: {
+    enforceTrialExpiry: false, // Set to true when ready to charge
+    autoTrialDays: 30,
+    tiktokEnabled: true,
+    packBuilderEnabled: true,
+  },
   // ===========================================================================
   // DEPRECATED SETS - Remove after regression testing
   // ===========================================================================
