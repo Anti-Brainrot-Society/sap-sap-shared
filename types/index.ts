@@ -70,3 +70,6 @@ export * from './lessons';
 
 // Micro-lessons types (for opening messages)
 export * from './microLessons';
+
+// Affiliate/referral system types
+export * from './affiliate';
