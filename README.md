@@ -94,6 +94,6 @@ For the complete system architecture including database topology, deployment str
 ## Consumers
 
 - [sap-sap-mobile](https://github.com/Anti-Brainrot-Society/sap-sap-mobile) - Mobile app
-- [sap-sap-app](https://github.com/Anti-Brainrot-Society/sap-sap-app) - Server API
+- [sap-sap-server](https://github.com/Anti-Brainrot-Society/sap-sap-server) - Server API
 - [sap-sap-admin](https://github.com/Anti-Brainrot-Society/sap-sap-admin) - Admin dashboard
 - [sap-sap-teacher](https://github.com/Anti-Brainrot-Society/sap-sap-teacher) - Teacher portal

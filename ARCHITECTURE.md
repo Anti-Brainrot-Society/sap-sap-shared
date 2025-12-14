@@ -8,7 +8,7 @@ This document describes the overall architecture of the SapSap ecosystem - a lan
 Anti-Brainrot-Society/
 ├── sap-sap-shared     # Shared types, constants, schemas (this repo)
 ├── sap-sap-mobile     # Expo React Native mobile app
-├── sap-sap-app        # Server monorepo (Next.js API)
+├── sap-sap-server        # Server monorepo (Next.js API)
 ├── sap-sap-admin      # Admin dashboard (Next.js)
 ├── sap-sap-teacher    # Teacher portal (Next.js)
 ├── sap-sap-ai         # AI pipeline and content generation
@@ -34,7 +34,7 @@ Anti-Brainrot-Society/
          │                  │       (introspection)    │
          ▼                  ▼                          ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                         sap-sap-app/apps/server                          │
+│                         sap-sap-server/apps/server                          │
 │                         (Next.js API Routes)                             │
 ├─────────────────────────────────────────────────────────────────────────┤
 │  /api/auth/*       - Authentication (better-auth)                       │
@@ -74,7 +74,7 @@ Anti-Brainrot-Society/
         ├── sap-sap-mobile (pnpm add)
         │   └── Types for API responses, feature flags, constants
         │
-        ├── sap-sap-app (workspace:* → npm package)
+        ├── sap-sap-server (workspace:* → npm package)
         │   └── Shared types and validation schemas
         │
         ├── sap-sap-admin (pnpm add)
@@ -110,7 +110,7 @@ Anti-Brainrot-Society/
 
 | Repository | APP_DATABASE_URL | CMS_DATABASE_URL | ADMIN_DATABASE_URL |
 |------------|------------------|------------------|-------------------|
-| sap-sap-app | ✅ Owns | ✅ Owns | - |
+| sap-sap-server | ✅ Owns | ✅ Owns | - |
 | sap-sap-teacher | ✅ Needs (auth) | ✅ Has | - |
 | sap-sap-admin | ✅ Needs (session) | ✅ Needs (content) | ✅ Owns |
 
@@ -186,6 +186,6 @@ pnpm add @anti-brainrot-society/shared
 
 **Related Repositories**:
 - [sap-sap-mobile](https://github.com/Anti-Brainrot-Society/sap-sap-mobile)
-- [sap-sap-app](https://github.com/Anti-Brainrot-Society/sap-sap-app)
+- [sap-sap-server](https://github.com/Anti-Brainrot-Society/sap-sap-server)
 - [sap-sap-admin](https://github.com/Anti-Brainrot-Society/sap-sap-admin)
 - [sap-sap-teacher](https://github.com/Anti-Brainrot-Society/sap-sap-teacher)
