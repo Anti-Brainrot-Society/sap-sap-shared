@@ -4,7 +4,8 @@
  * Used for tracking affiliate attributions and conversions across
  * mobile app, server, and admin panel.
  *
- * Provider: Insert Affiliate (https://insertaffiliate.com)
+ * Mobile Provider: GoMarketMe (https://gomarketme.co)
+ * Web Provider (Future): Rewardful or FirstPromoter (TBD)
  */
 
 // ============================================
@@ -15,7 +16,11 @@
 export type AffiliateAttributionSource = 'deep_link' | 'deferred' | 'manual';
 
 /** Affiliate provider identifier */
-export type AffiliateProvider = 'insertaffiliate' | 'gomarketme' | 'manual';
+export type AffiliateProvider =
+  | 'gomarketme'      // Mobile app affiliates
+  | 'rewardful'       // Web affiliates (future)
+  | 'firstpromoter'   // Web affiliates (future)
+  | 'manual';         // Manual attribution
 
 /**
  * Attribution data captured when a user is referred by an affiliate.
@@ -90,7 +95,7 @@ export type AffiliateStatus = 'active' | 'pending' | 'suspended';
 
 /**
  * An affiliate in the system.
- * Note: Full affiliate management is in Insert Affiliate dashboard.
+ * Note: Full affiliate management is in provider dashboard (GoMarketMe, etc).
  * This is for display in admin panel.
  */
 export interface Affiliate {
@@ -189,34 +194,32 @@ export interface AffiliateStatsResponse {
 }
 
 // ============================================
-// Webhook Types (Insert Affiliate → Server)
+// Webhook Types (GoMarketMe → Server)
 // ============================================
 
 /**
- * Webhook event types from Insert Affiliate.
- * Note: Actual payload structure should be confirmed with Insert Affiliate docs.
+ * Webhook event types from GoMarketMe.
+ * Note: Confirm exact payload structure with GoMarketMe docs.
  */
-export type InsertAffiliateWebhookType =
+export type GoMarketMeWebhookType =
   | 'conversion'
   | 'refund'
-  | 'affiliate_created'
-  | 'affiliate_updated'
-  | 'payout_completed';
+  | 'payout';
 
 /**
- * Base webhook payload from Insert Affiliate.
+ * Base webhook payload from GoMarketMe.
  */
-export interface InsertAffiliateWebhookPayload {
+export interface GoMarketMeWebhookPayload {
   event_id: string;
-  event_type: InsertAffiliateWebhookType;
+  event_type: GoMarketMeWebhookType;
   timestamp: string;
   data: Record<string, unknown>;
 }
 
 /**
- * Conversion webhook payload.
+ * Conversion webhook payload from GoMarketMe.
  */
-export interface InsertAffiliateConversionPayload {
+export interface GoMarketMeConversionPayload {
   event_id: string;
   event_type: 'conversion';
   timestamp: string;
@@ -227,5 +230,19 @@ export interface InsertAffiliateConversionPayload {
     revenue_cents?: number;
     commission_cents?: number;
     transaction_id?: string;
+  };
+}
+
+/**
+ * Refund webhook payload from GoMarketMe.
+ */
+export interface GoMarketMeRefundPayload {
+  event_id: string;
+  event_type: 'refund';
+  timestamp: string;
+  data: {
+    affiliate_code: string;
+    original_event_id?: string;
+    refund_amount_cents?: number;
   };
 }

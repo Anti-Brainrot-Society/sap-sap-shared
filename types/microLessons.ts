@@ -31,7 +31,7 @@
 export const MICRO_LESSONS_SCHEMA_VERSION = 1;
 
 /** Teaching item types */
-export type MicroLessonItemKind = 'takeaway' | 'question' | 'pronunciation' | 'cultural' | 'mistake' | 'related';
+export type MicroLessonItemKind = 'takeaway' | 'question' | 'pronunciation' | 'cultural' | 'mistake' | 'related' | 'imagine' | 'vibe' | 'buddy' | 'emoji';
 
 /** A simple takeaway/tip */
 export interface MicroLessonTakeaway {
@@ -63,6 +63,30 @@ export interface MicroLessonRelated {
   v: string;
 }
 
+/** Vivid mental image/scene/feeling to remember a word */
+export interface MicroLessonImagine {
+  k: 'imagine';
+  v: string;
+}
+
+/** Energy/personality of a word (1-3 words) */
+export interface MicroLessonVibe {
+  k: 'vibe';
+  v: string;
+}
+
+/** Words that naturally pair together */
+export interface MicroLessonBuddy {
+  k: 'buddy';
+  v: string;
+}
+
+/** Emojis capturing word meaning */
+export interface MicroLessonEmoji {
+  k: 'emoji';
+  v: string;
+}
+
 /** A quiz question with options */
 export interface MicroLessonQuestion {
   k: 'question';
@@ -83,6 +107,10 @@ export type MicroLessonTeachingItem =
   | MicroLessonCultural
   | MicroLessonMistake
   | MicroLessonRelated
+  | MicroLessonImagine
+  | MicroLessonVibe
+  | MicroLessonBuddy
+  | MicroLessonEmoji
   | MicroLessonQuestion;
 
 /** Lessons for a single message in the opening sequence */
@@ -137,6 +165,30 @@ export interface ParsedRelated {
   text: string;
 }
 
+/** Parsed imagine (mental image/scene/feeling) */
+export interface ParsedImagine {
+  type: 'imagine';
+  text: string;
+}
+
+/** Parsed vibe (energy/personality) */
+export interface ParsedVibe {
+  type: 'vibe';
+  text: string;
+}
+
+/** Parsed buddy (word pairings) */
+export interface ParsedBuddy {
+  type: 'buddy';
+  text: string;
+}
+
+/** Parsed emoji (emoji representation) */
+export interface ParsedEmoji {
+  type: 'emoji';
+  text: string;
+}
+
 /** Parsed question ready for display */
 export interface ParsedQuestion {
   type: 'question';
@@ -152,6 +204,10 @@ export type ParsedTeachingItem =
   | ParsedCultural
   | ParsedMistake
   | ParsedRelated
+  | ParsedImagine
+  | ParsedVibe
+  | ParsedBuddy
+  | ParsedEmoji
   | ParsedQuestion;
 
 /** Parsed lessons for a single message */
@@ -189,6 +245,22 @@ export function isMicroLessonMistake(item: MicroLessonTeachingItem): item is Mic
 
 export function isMicroLessonRelated(item: MicroLessonTeachingItem): item is MicroLessonRelated {
   return item.k === 'related' && typeof item.v === 'string';
+}
+
+export function isMicroLessonImagine(item: MicroLessonTeachingItem): item is MicroLessonImagine {
+  return item.k === 'imagine' && typeof item.v === 'string';
+}
+
+export function isMicroLessonVibe(item: MicroLessonTeachingItem): item is MicroLessonVibe {
+  return item.k === 'vibe' && typeof item.v === 'string';
+}
+
+export function isMicroLessonBuddy(item: MicroLessonTeachingItem): item is MicroLessonBuddy {
+  return item.k === 'buddy' && typeof item.v === 'string';
+}
+
+export function isMicroLessonEmoji(item: MicroLessonTeachingItem): item is MicroLessonEmoji {
+  return item.k === 'emoji' && typeof item.v === 'string';
 }
 
 export function isMicroLessonQuestion(item: MicroLessonTeachingItem): item is MicroLessonQuestion {
@@ -256,6 +328,26 @@ export function parseMicroLessons(raw: unknown): ParsedMicroLessons | null {
       } else if (isMicroLessonRelated(teachItem)) {
         items.push({
           type: 'related',
+          text: teachItem.v,
+        });
+      } else if (isMicroLessonImagine(teachItem)) {
+        items.push({
+          type: 'imagine',
+          text: teachItem.v,
+        });
+      } else if (isMicroLessonVibe(teachItem)) {
+        items.push({
+          type: 'vibe',
+          text: teachItem.v,
+        });
+      } else if (isMicroLessonBuddy(teachItem)) {
+        items.push({
+          type: 'buddy',
+          text: teachItem.v,
+        });
+      } else if (isMicroLessonEmoji(teachItem)) {
+        items.push({
+          type: 'emoji',
           text: teachItem.v,
         });
       } else if (isMicroLessonQuestion(teachItem)) {

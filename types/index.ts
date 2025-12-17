@@ -73,3 +73,6 @@ export * from './microLessons';
 
 // Affiliate/referral system types
 export * from './affiliate';
+
+// Voice/TTS types
+export * from './voice';
