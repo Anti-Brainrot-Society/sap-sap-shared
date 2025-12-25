@@ -76,3 +76,6 @@ export * from './affiliate';
 
 // Voice/TTS types
 export * from './voice';
+
+// Story output types (LLM output format)
+export * from './storyOutput';
