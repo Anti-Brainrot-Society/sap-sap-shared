@@ -1,10 +1,11 @@
 /**
  * LLM Output Schema Utilities
  *
- * Provides field mappings and transformation utilities for converting
- * LLM output (snake_case, various aliases) to canonical DB format (camelCase).
+ * Provides field mappings, transformation utilities, and validation functions
+ * for converting LLM output (snake_case, various aliases) to canonical DB format (camelCase).
  */
 
+// Field mappings and transform utilities
 export {
   FIELD_MAPPINGS,
   STORY_FIELD_MAPPINGS,
@@ -19,3 +20,37 @@ export {
   normalizeResponseSuggestions,
   type EntityType,
 } from './transforms';
+
+// Validation schemas and functions
+export {
+  // Raw schemas (accept LLM output format)
+  RawPremadeMessageSchema,
+  RawCharacterSchema,
+  RawChatSchema,
+  RawBeatSchema,
+  RawStorySchema,
+  RawStoryOutputSchema,
+  // Normalized schemas (canonical DB format)
+  NormalizedPremadeMessageSchema,
+  NormalizedCharacterSchema,
+  NormalizedChatSchema,
+  NormalizedBeatSchema,
+  NormalizedStorySchema,
+  NormalizedStoryOutputSchema,
+  VoiceConfigSchema,
+  StoryDescriptionSchema,
+  StorySettingsSchema,
+  // Validation functions
+  validateLLMStoryOutput,
+  validateStrictStoryOutput,
+  // Types
+  type RawStoryOutput,
+  type NormalizedPremadeMessage,
+  type NormalizedCharacter,
+  type NormalizedChat,
+  type NormalizedBeat,
+  type NormalizedStory,
+  type NormalizedStoryOutput,
+  type ValidationWarning,
+  type ValidationResult,
+} from './validate';

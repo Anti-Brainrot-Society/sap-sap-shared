@@ -5,6 +5,9 @@ import { z } from 'zod';
  * These are the pre-written messages that appear in the chat for each beat.
  *
  * Supports both LLM output format (snake_case) and DB format (camelCase).
+ *
+ * @deprecated Use RawPremadeMessageSchema from './llmOutput' for new code.
+ * This schema is kept for backwards compatibility.
  */
 export const PremadeMessageSchema = z.object({
   // Sender - accepts both snake_case (LLM output) and camelCase (DB format)
@@ -31,19 +34,8 @@ export const PremadeMessageSchema = z.object({
 
 export type PremadeMessage = z.infer<typeof PremadeMessageSchema>;
 
-/**
- * Normalized premade message with canonical field names.
- * Use this after transformation from LLM output.
- */
-export const NormalizedPremadeMessageSchema = z.object({
-  sender: z.string().min(1),
-  content: z.string(),
-  languages: z.array(z.string()).default([]),
-  senderDisplayName: z.string().optional(),
-  translation: z.string().optional(),
-  phonetic: z.string().optional(),
-  delaySeconds: z.number().optional(),
-  messageNote: z.string().optional(),
-});
-
-export type NormalizedPremadeMessage = z.infer<typeof NormalizedPremadeMessageSchema>;
+// Re-export normalized schema from llmOutput for backwards compatibility
+export {
+  NormalizedPremadeMessageSchema,
+  type NormalizedPremadeMessage,
+} from './llmOutput/validate';
