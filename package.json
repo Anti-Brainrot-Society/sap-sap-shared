@@ -1,6 +1,6 @@
 {
   "name": "@anti-brainrot-society/shared",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
@@ -29,10 +29,20 @@
       "import": "./dist/constants/*.js",
       "require": "./dist/constants/*.js"
     },
+    "./schemas": {
+      "types": "./dist/schemas/index.d.ts",
+      "import": "./dist/schemas/index.js",
+      "require": "./dist/schemas/index.js"
+    },
     "./schemas/*": {
       "types": "./dist/schemas/*.d.ts",
       "import": "./dist/schemas/*.js",
       "require": "./dist/schemas/*.js"
+    },
+    "./schemas/llmOutput": {
+      "types": "./dist/schemas/llmOutput/index.d.ts",
+      "import": "./dist/schemas/llmOutput/index.js",
+      "require": "./dist/schemas/llmOutput/index.js"
     },
     "./lib/*": {
       "types": "./dist/lib/*.d.ts",
