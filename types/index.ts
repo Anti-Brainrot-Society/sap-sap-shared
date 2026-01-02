@@ -79,3 +79,9 @@ export * from './voice';
 
 // Story output types (LLM output format)
 export * from './storyOutput';
+
+// Story influencer types (branded stories)
+export * from './storyInfluencer';
+
+// Secret code types (story unlocking)
+export * from './secretCode';
