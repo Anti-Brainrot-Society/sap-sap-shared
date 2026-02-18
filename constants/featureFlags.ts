@@ -38,6 +38,7 @@ export const DEFAULT_FLAGS: FeatureFlags = {
     enabled: false,
     freeBeatsPerStory: 2,
     useNativePaywallUI: true,
+    sokSokDailyLimitMinutes: 10,
   },
   teacherPortal: {
     authEnabled: false, // Set to true to require login
@@ -57,6 +58,13 @@ export const DEFAULT_FLAGS: FeatureFlags = {
     enableExperimentalProfile: false,
     allowAvatarUploadR2: false,
     learningProfileUiEnabled: true, // Shows new learning profile screen with streaks/stats
+  },
+  snaps: {
+    enabled: false,
+    doodleEnabled: false,
+    publicFeedEnabled: false,
+    commentsEnabled: false,
+    characterCommentsEnabled: false,
   },
   lessons: {
     enabled: true,

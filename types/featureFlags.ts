@@ -63,6 +63,8 @@ export interface PaywallFlags {
   freeBeatsPerStory: number;
   // Prefer showing native RC paywall UI when available
   useNativePaywallUI: boolean;
+  // Daily time limit for Sok-Sok feed (in minutes) for free users
+  sokSokDailyLimitMinutes: number;
 }
 
 // Teacher Portal flags
@@ -103,6 +105,20 @@ export interface LessonsFlags {
   enabled: boolean;
 }
 
+// Snaps feature flags (camera snap, library, public feed, comments)
+export interface SnapsFlags {
+  /** Master kill switch — hides camera snap card + library entry points */
+  enabled: boolean;
+  /** Independent switch for doodle art snap card */
+  doodleEnabled: boolean;
+  /** Enable public feed injection into Sok-Sok + "Make Public" privacy option */
+  publicFeedEnabled: boolean;
+  /** Enable comments on snaps (user comments + grammar corrections) */
+  commentsEnabled: boolean;
+  /** Enable AI character comment trickle (Phase 2+) */
+  characterCommentsEnabled: boolean;
+}
+
 // =============================================================================
 
 export interface FeatureFlags {
@@ -114,6 +130,8 @@ export interface FeatureFlags {
   teacherPortal: TeacherPortalFlags;
   // Profile flags (learning profile, etc.)
   profile: ProfileFlags;
+  // Snaps feature flags (camera, library, public feed, social)
+  snaps: SnapsFlags;
   // --- DEPRECATED SETS ---
   /** @deprecated Remove after cleanup */
   onboarding: OnboardingFlags;
