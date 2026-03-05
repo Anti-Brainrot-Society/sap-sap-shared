@@ -117,7 +117,7 @@ export interface SnapsFlags {
   commentsEnabled: boolean;
   /** Enable AI character comment trickle (Phase 2+) */
   characterCommentsEnabled: boolean;
-  /** Enable snap collections feature */
+  /** Enable snap collections (group + organize snaps) */
   collectionsEnabled: boolean;
 }
 
