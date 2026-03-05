@@ -85,3 +85,6 @@ export * from './storyInfluencer';
 
 // Secret code types (story unlocking)
 export * from './secretCode';
+
+// Notification preference types
+export * from './notificationPreferences';
