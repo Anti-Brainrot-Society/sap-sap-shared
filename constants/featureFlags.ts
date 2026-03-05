@@ -65,6 +65,7 @@ export const DEFAULT_FLAGS: FeatureFlags = {
     publicFeedEnabled: false,
     commentsEnabled: false,
     characterCommentsEnabled: false,
+    collectionsEnabled: false,
   },
   lessons: {
     enabled: true,
