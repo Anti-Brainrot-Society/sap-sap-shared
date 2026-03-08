@@ -119,6 +119,8 @@ export interface SnapsFlags {
   characterCommentsEnabled: boolean;
   /** Enable snap collections (group + organize snaps) */
   collectionsEnabled: boolean;
+  /** Enable follow/unfollow between users */
+  followsEnabled: boolean;
 }
 
 // =============================================================================
